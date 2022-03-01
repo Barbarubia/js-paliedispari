@@ -31,9 +31,12 @@ section {
     border-radius: 2rem;
 }
 
+section > * {
+    margin-bottom: 1rem;
+}
+
 h2 {
     color: rgb(145, 0, 0);
-    margin-bottom: 1rem;
 }
 
 input {
@@ -50,10 +53,6 @@ button {
     font-weight: 600;
     color: white;
     cursor: pointer;
-}
-
-.input-data {
-    margin-bottom: 1rem;
 }
 
 .invisible-text {
