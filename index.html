@@ -31,6 +31,17 @@
         <!-- Esercizio 2: gioco del pari e dispari -->
         <section>
             <h2>Pari e Dispari</h2>
+            <p>Scommetti sul pari o sul dispari.<br>Poi scegli un numero da 1 a 5.<br>Il computer genererà casualmente un altro numero da 1 a 5 e lo sommerà a quello da te scelto.<br>Se la somma dei due numeri coinciderà con la scelta tra pari e dispari da te effettuata, vinci!</p>
+
+            <!-- 
+            PS: QUESTO GIOCO NON E' EQUO...
+            La somma dei 2 numeri genererà un intervallo di valori compreso tra 2 e 10
+            Numeri Pari: 2 - 4 - 6 - 8 - 10
+            Numeri Dispari 3 - 5 - 7 - 9
+            In termini statistici conviene scommettere sul pari ;)
+            -->
+
+
             <!-- Radiobuttons per far scegliere all'utente pari o dispari -->
             <div class="radio-select">
                 <input type="radio" id="even" name="odd-or-even" value="even">
@@ -38,11 +49,12 @@
                 <input type="radio" id="odd" name="odd-or-even" value="odd">
                 <label for="odd">Dispari</label>
             </div>
+
             <div class="number-select">
                 <label for="number">Scegli un numero da 1 a 5:</label>
                 <input type="number" name="number" id="number" placeholder="Digita qui">
             </div>
-            <button id="button-play">Gioca</button>
+            <button id="button-play">Gioca!</button>
             <p id="number-output"><span class="invisible-text">testo invisibile</span></p>
         </section>
 
