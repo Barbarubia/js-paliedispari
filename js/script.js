@@ -37,13 +37,13 @@ function isPalindrome() {
 
     // Confronto l'uguaglianza tra le due parole trasformate in minuscolo per confrontarne l'uguaglianza e stampo il risultato, prima però faccio una verifica sulla lunghezza della parola perché la verifica ha senso solo per parole di almeno due caratteri
     if (userWord.length == 0) {
-        outputWordArea.innerHTML = `Non hai digitato nulla.`;
+        outputWordArea.innerHTML = `<span class="text-strong-red"><i class="fa-solid fa-triangle-exclamation"></i> Non hai digitato nulla.</span>`;
     } else if (userWord.length < 2) {
-        outputWordArea.innerHTML = `Inserisci una parola di almeno 2 caratteri.`;
+        outputWordArea.innerHTML = `<span class="text-strong-red"><i class="fa-solid fa-triangle-exclamation"></i> Inserisci una parola di almeno 2 caratteri.</span>`;
     } else if (userWord.toLowerCase() == reversedWord.toLowerCase()) {
-        outputWordArea.innerHTML = `La parola "${userWord}" è palindroma.`;
+        outputWordArea.innerHTML = `La parola <span class="text-strong-red">${userWord}</span> è palindroma.`;
     } else {
-        outputWordArea.innerHTML = `La parola "${userWord}" non è palindroma.`;
+        outputWordArea.innerHTML = `La parola <span class="text-strong-red">${userWord}</span> non è palindroma.`;
     }
 
     // Ripulisco l'input
@@ -74,6 +74,17 @@ Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
 Dichiariamo chi ha vinto.
 */
 
+// Seleziono gli elementi HTML relativi ai radio buttons
+const radioButtons = document.querySelectorAll('input[name="odd-or-even"]');
+
+// Seleziono l'elemento HTML dove l'utente digita un numero
+let numberBox = document.getElementById('number')
+
+// Scrivo la funzione che fa generare un numero intero casuale compreso tra 1 e 5 inclusi (la userò all'interno della funzione principale)
+function randomNumberGenerator(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 // Seleziono l'elemento HTML bottone al cui click l'utente giocherà a pari e dispari
 let buttonPlay = document.getElementById('button-play');
 
@@ -83,23 +94,12 @@ let outputNumberArea = document.getElementById('number-output');
 // Eseguo la funzione che al click del bottone verifica se la parola inserita è palindroma
 buttonPlay.addEventListener('click', playOddOrEven);
 
-// Seleziono gli elementi HTML relativi ai radio buttons
-const radioButtons = document.querySelectorAll('input[name="odd-or-even"]');
 
-// Seleziono l'elemento HTML dove l'utente digita un numero
-let numberBox = document.getElementById('number')
 
-// Scrivo la funzione che fa generare un numero intero casuale compreso tra 1 e 5 inclusi
-function randomNumberGenerator(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
 
 
 // Scrivo la funzione per giocare
 function playOddOrEven() {
-
-    // Definisco il valore scelto dall'utente
-    let userNumber = numberBox.value
 
     // Controllo se l'utente ha scelto pari o dispari
     // Questo controllo l'ho cercato su internet
@@ -110,28 +110,29 @@ function playOddOrEven() {
         }
     }
 
-    if (isNaN(userNumber) || userNumber < 1 || userNumber > 5 || parseInt(userNumber) - userNumber != 0) {
-        outputNumberArea.innerHTML = `Devi digitare un numero intero da 1 a 5`;
-    }
+    // Definisco il valore scelto dall'utente
+    let userNumber = numberBox.value
 
     // Il computer genera un numero random da 1 a 5
     let randomNumber = randomNumberGenerator(1, 5);
 
     // Effettuo la somma del numero scelto dall'utente e del numero random generato
     let sum = parseInt(userNumber) + parseInt(randomNumber);
+    // PS: gioco non equo - vedi commento nell'html
 
-    // Controllo il numero digitato dall'utente: se non ha digitato un valore intero compreso tra 1 e 5 stampo un errore, altrimenti stabilisco chi ha vinto
+    // Controllo se l'utente ha scelto tra pari e dispari e se il numero digitato è coerente con il gioco: in tali casi mando un messaggio di errore, altrimenti stabilisco chi ha vinto
     if (selectedRadioButton != "even" && selectedRadioButton != "odd") { // l'utente non ha scelto pari o dispari
-        outputNumberArea.innerHTML = `Devi scegliere pari o dispari`;
+        outputNumberArea.innerHTML = `<span class="text-strong-red"><i class="fa-solid fa-triangle-exclamation"></i> Devi scegliere pari o dispari.</span>`;
     } else if (isNaN(userNumber) || userNumber < 1 || userNumber > 5 || parseInt(userNumber) - userNumber != 0) {
-        outputNumberArea.innerHTML = `Devi digitare un numero intero da 1 a 5`;
+        outputNumberArea.innerHTML = `<span class="text-strong-red"><i class="fa-solid fa-triangle-exclamation"></i> Devi digitare un numero intero da 1 a 5.</span>`;
     } else if ((selectedRadioButton == "even") && (sum % 2 == 0)) { // l'utente ha scelto pari e la somma dei numeri è pari
-        outputNumberArea.innerHTML = `È uscito il numero ${sum}: HAI VINTO!`;
+        outputNumberArea.innerHTML = `È uscito il numero ${sum}: <span class="text-strong-red">HAI VINTO! <i class="fa-solid fa-trophy"></i></span>`;
     } else if ((selectedRadioButton == "odd") && (sum % 2 != 0)) { // l'utente ha scelto dispari e la somma dei numeri è dispari
-        outputNumberArea.innerHTML = `È uscito il numero ${sum}: HAI VINTO!`;
-    } else {
-        outputNumberArea.innerHTML = `È uscito il numero ${sum}: HAI PERSO!`;
+        outputNumberArea.innerHTML = `È uscito il numero ${sum}: <span class="text-strong-red">HAI VINTO! <i class="fa-solid fa-trophy"></i></span>`;
+    } else { // Tutti gli altri casi in cui scelta e numero sono validi ma non coincidono
+        outputNumberArea.innerHTML = `È uscito il numero ${sum}: <span class="text-strong-red">HAI PERSO! <i class="fa-regular fa-face-frown"></i></span>`;
     }
+
 }
 
 
