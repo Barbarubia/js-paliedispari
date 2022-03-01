@@ -55,6 +55,12 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    background-color: lightgray;
+    color: rgb(145, 0, 0);
+    box-shadow: 0 0 10px 3px rgb(145, 0, 0);
+}
+
 .invisible-text {
     opacity: 0;
 }
