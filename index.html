@@ -20,10 +20,12 @@
         <!-- Esercizio 1: chiedere una parola e verificare se è palindroma -->
         <section>
             <h2>Palindroma</h2>
-            <label for="word">Scrivi una parola utilizzando esclusivamente caratteri alfabetici (a-z):</label>
-            <input type="text" name="word" id="word" placeholder="Scrivi qui">
+            <div class="input-data">
+            <label for="word">Scrivi una parola:</label>
+            <input type="text" name="word" id="word" placeholder="Digita qui">
             <button id="button-verify-word">La parola inserita è palindroma?</button>
-            <p id="word-output"></p>
+            </div>
+            <p id="word-output"><spa class="invisible-text">testo invisibile</span></p>
         </section>
 
         <!-- Esercizio 2: gioco del pari e dispari -->
@@ -35,7 +37,7 @@
             <input type="radio" id="odd" name="" value="odd">
             <label for="odd">Dispari</label>
             <label for="number">Scegli un numero da 1 a 5:</label>
-            <input type="number" name="number" id="number" placeholder="Scrivi qui">
+            <input type="number" name="number" id="number" placeholder="Digita qui">
             <button id="button-play">Gioca</button>
             <p id="number-output"></p>
         </section>
